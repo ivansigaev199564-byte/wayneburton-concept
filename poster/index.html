@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wayne Burton, poster concept</title>
+<meta name="description" content="Design concept for wayneburton.com: inspirational music by Wayne Burton. Concept only, not the live site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,400..900&family=Schibsted+Grotesk:wght@400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@900&text=%E8%88%87%E6%88%91%E5%90%8C%E8%A1%8C&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1A40; --paper:#FFFBF0;
+  --sun:#FFD23F; --coral:#FF7A5C; --mint:#5EE6A8; --cobalt:#2340E8;
+  --chalk:#F1F5FF; --sky:#7CCBFF; --pink:#FF8FC7;
+  --g:clamp(16px,4vw,56px);
+  --disp:'Anybody','Noto Sans TC',system-ui,sans-serif;
+  --body:'Schibsted Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --focus:var(--ink);
+  --ease:cubic-bezier(.2,.9,.25,1.15);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--chalk);color:var(--ink);font:400 1.0625rem/1.55 var(--body);overflow-x:clip}
+img{display:block;max-width:100%}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wrap{width:100%;max-width:1440px;margin:0 auto;padding-inline:var(--g)}
+.skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:999px;text-decoration:none;font-weight:700}
+.skip:focus{top:12px}
+
+/* ---------- type ---------- */
+.fit{font-family:var(--disp);line-height:.86;margin:0;font-size:12vw;max-width:100%;contain:inline-size}
+.fit .ln{display:block;white-space:nowrap}
+.fit .lt{display:inline-block}
+.wide{font-stretch:150%;font-weight:900;letter-spacing:-.02em;line-height:.94}
+.narrow{font-stretch:56%;font-weight:900;text-transform:uppercase;letter-spacing:-.005em}
+.lede{font-size:clamp(1.0625rem,1.3vw,1.25rem);max-width:56ch;margin:0}
+.small{font-size:.9375rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;border:3px solid var(--bb,var(--ink));background:var(--bg-b,var(--ink));color:var(--fg-b,var(--paper));font-weight:800;font-size:1rem;text-decoration:none;transition:transform .18s var(--ease),box-shadow .18s}
+.btn:hover{transform:translate(-2px,-3px);box-shadow:3px 4px 0 var(--bb,var(--ink))}
+.btn:active{transform:none;box-shadow:none}
+.btn.ghost{--bg-b:transparent;--fg-b:var(--ink)}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.btn svg{flex:none}
+.pb{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);color:var(--paper);display:grid;place-items:center;transition:transform .18s var(--ease),background .2s}
+.pb:hover{transform:scale(1.1)}
+.pb.is-playing{background:var(--coral);color:var(--ink);box-shadow:0 0 0 3px var(--ink)}
+
+/* ---------- stickers ---------- */
+.sticker{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:3px solid var(--ink);border-radius:999px;background:var(--sun);color:var(--ink);font-weight:800;font-size:.9375rem;line-height:1.1;transform:rotate(var(--r,-4deg));box-shadow:3px 3px 0 var(--ink);white-space:nowrap}
+.wiggle:hover,.wiggle-host:hover .wiggle{animation:wiggle .5s ease-in-out}
+@keyframes wiggle{0%,100%{transform:rotate(var(--r,-4deg))}25%{transform:rotate(calc(var(--r,-4deg) + 7deg)) scale(1.06)}60%{transform:rotate(calc(var(--r,-4deg) - 5deg)) scale(1.03)}}
+
+/* ---------- duotone photos ---------- */
+.duo{position:relative;overflow:hidden;background:var(--hi,#fff);isolation:isolate}
+.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.3) brightness(1.08);mix-blend-mode:multiply}
+.duo::after{content:"";position:absolute;inset:0;background:var(--lo,var(--ink));mix-blend-mode:lighten;pointer-events:none}
+.duo::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle,rgba(14,26,64,.35) 0 .9px,transparent 1.3px) 0 0/5px 5px;mix-blend-mode:multiply;opacity:.45}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:40;padding:10px var(--g);pointer-events:none}
+.bar{pointer-events:auto;max-width:1392px;margin:0 auto;display:flex;align-items:center;gap:12px;background:var(--paper);border:3px solid var(--ink);border-radius:999px;padding:5px 6px 5px 20px;box-shadow:4px 4px 0 var(--ink)}
+.brand{font:900 1.15rem/1 var(--disp);font-stretch:140%;text-decoration:none;letter-spacing:-.02em;white-space:nowrap;min-height:44px;display:flex;align-items:center}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{display:flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.9375rem}
+.nav a:hover{background:var(--sun)}
+.cart{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:0;background:var(--ink);color:var(--paper);font-weight:800}
+.cart b{display:inline-grid;place-items:center;min-width:24px;height:24px;border-radius:999px;background:var(--sun);color:var(--ink);font-size:.8125rem}
+.cart.bump b{animation:bump .4s var(--ease)}
+@keyframes bump{50%{transform:scale(1.45)}}
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;border:3px solid var(--ink);background:var(--sun);place-items:center;margin-left:auto}
+.menu{display:none}
+@media (max-width:900px){
+  .nav{display:none}
+  .menu-btn{display:grid}
+  .menu{pointer-events:auto;position:absolute;left:var(--g);right:var(--g);top:76px;background:var(--paper);border:3px solid var(--ink);border-radius:24px;box-shadow:4px 4px 0 var(--ink);padding:10px}
+  .menu.open{display:block}
+  .menu a{display:flex;align-items:center;min-height:52px;padding:0 16px;border-radius:14px;text-decoration:none;font:900 1.4rem/1 var(--disp);font-stretch:120%}
+  .menu a:hover{background:var(--sun)}
+}
+@media (max-width:480px){.brand{font-size:1rem}.bar{padding-left:14px;gap:8px}.cart>span{display:none}.cart{padding:0 12px}}
+
+/* ---------- hero ---------- */
+.hero{--bg:var(--sun);--fg:var(--ink);--hi:#FFE9A6;background:var(--bg);color:var(--fg);margin-top:-80px;padding:110px 0 clamp(40px,6vw,72px);transition:background-color .7s ease,color .5s ease;position:relative}
+.hero.dark{--focus:var(--paper)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.75fr);gap:clamp(24px,4vw,64px);align-items:end}
+.hero-kicker{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin:0 0 18px}
+.hero-kicker .lang{font-weight:800;font-size:1.0625rem}
+.hero-title{height:clamp(280px,56vh,600px);display:flex;flex-direction:column;justify-content:flex-end;font-size:150px}
+.hero-title .ln{overflow:hidden;padding:.07em 0 .02em;margin:-.07em 0 -.02em}
+.hero-title .lt{will-change:transform}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;align-items:center}
+.hero.dark .btn{--bb:var(--paper);--bg-b:var(--paper);--fg-b:var(--ink)}
+.hero.dark .btn.ghost{--bg-b:transparent;--fg-b:var(--paper)}
+.cycle{width:52px;height:52px;border-radius:50%;border:3px solid currentColor;background:transparent;display:grid;place-items:center}
+.hero-note{margin:16px 0 0;font-weight:600;max-width:48ch}
+.hero-photo{position:relative;justify-self:end;width:100%;max-width:460px}
+.hero-photo .duo{aspect-ratio:4/5;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);transform:rotate(2.5deg);--hi:var(--tint);transition:background-color .7s}
+.hero-photo .duo img{object-position:36% 28%}
+.hero-photo .badge{position:absolute;left:-34px;bottom:34px;width:128px;height:128px;border-radius:50%;--r:-12deg;display:grid;place-items:center;text-align:center;white-space:normal;padding:12px;font-size:.9375rem;background:var(--paper)}
+.hero-photo figcaption{margin-top:22px;font-size:.875rem;font-weight:600;text-align:right}
+@media (max-width:860px){
+  .hero{padding-top:100px}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-title{height:clamp(200px,64vw,380px)}
+  .hero-photo{justify-self:center;max-width:300px;margin-top:20px}
+  .hero-photo .badge{left:-18px;width:108px;height:108px;font-size:.8125rem}
+}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--ink);color:var(--sun);overflow:hidden;border-block:3px solid var(--ink);padding:14px 0}
+.marquee .track{display:flex;width:max-content;animation:mq 38s linear infinite}
+.marquee .grp{display:flex;align-items:center;gap:28px;padding-right:28px;font:900 clamp(1.4rem,2.6vw,2.2rem)/1 var(--disp);font-stretch:130%;white-space:nowrap}
+.marquee svg{flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+.marquee.alt{background:var(--sun);color:var(--ink)}
+.marquee.alt .track{animation-direction:reverse;animation-duration:30s}
+
+/* ---------- sections ---------- */
+.sec{padding:clamp(56px,8vw,128px) 0;position:relative}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-bottom:clamp(32px,4vw,56px)}
+.sec-head .fit{width:100%}
+.dark-sec{--focus:var(--paper)}
+
+/* walk with me picker */
+.walk{background:var(--chalk)}
+.walk-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+@media (max-width:860px){.walk-head{grid-template-columns:minmax(0,1fr)}}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+@media (max-width:1100px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:200px;padding:16px;text-align:left;border:3px solid var(--ink);border-radius:20px;background:var(--c);color:var(--tfg,var(--ink));overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s}
+button.tile:hover{transform:rotate(-1.5deg) translateY(-4px);box-shadow:6px 8px 0 var(--ink)}
+.tile:nth-child(even):hover{transform:rotate(1.5deg) translateY(-4px)}
+.tile .nm{font:900 clamp(1.5rem,2.3vw,2.2rem)/.92 var(--disp);font-stretch:70%;text-transform:uppercase;overflow-wrap:anywhere}
+.tile .row{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:800}
+.tile .ic{width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;flex:none}
+.tile.dark .ic{background:var(--paper);color:var(--ink)}
+.tile.is-playing{box-shadow:6px 8px 0 var(--ink);transform:rotate(-1.5deg)}
+.tile.is-playing .ic{background:var(--paper);color:var(--ink);box-shadow:0 0 0 3px var(--ink)}
+.tile .prog{position:absolute;left:0;bottom:0;height:7px;width:0;background:var(--ink)}
+.tile.dark .prog{background:var(--paper)}
+.tile.soon{background:repeating-linear-gradient(-45deg,var(--paper) 0 12px,var(--chalk) 12px 24px);border-style:dashed}
+.tile.soon .sticker{--r:6deg;align-self:flex-start;background:var(--c);font-size:.8125rem;padding:5px 10px}
+@media (max-width:640px){.tile{min-height:160px;padding:12px;border-radius:16px}}
+
+/* statement */
+.since{background:var(--coral)}
+.since-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+.since .fit{width:100%}
+.since-copy{display:grid;gap:18px;margin-top:28px}
+.since-photo .duo{--hi:#FFC9B8;aspect-ratio:5/6;border:4px solid var(--ink);box-shadow:-10px 10px 0 var(--ink);transform:rotate(-2deg)}
+.since-photo .duo img{object-position:20% 40%;filter:grayscale(1) contrast(1.15) brightness(1.55)}
+.series{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.series .sticker{--r:0deg;background:var(--paper);box-shadow:none}
+.series .sticker:nth-child(2){--r:-3deg}.series .sticker:nth-child(3){--r:2deg}
+@media (max-width:860px){.since-grid{grid-template-columns:minmax(0,1fr)}.since-photo{max-width:420px}}
+
+/* albums */
+.albums{background:var(--cobalt);color:var(--paper)}
+.albums .lede{color:var(--paper)}
+.wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,3vw,44px) clamp(14px,2.4vw,36px)}
+@media (max-width:1000px){.wall{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.wall{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.poster{position:relative;display:block;text-decoration:none;color:var(--paper);background:none;border:0;padding:0;text-align:left;width:100%}
+.poster .frame{padding:clamp(8px,1vw,14px);background:var(--fc);border:3px solid var(--ink);transform:rotate(var(--rot));box-shadow:8px 8px 0 var(--ink);transition:transform .3s var(--ease),background-color .25s}
+.poster .frame img{aspect-ratio:1;width:100%;object-fit:cover;background:var(--ink)}
+.poster:hover .frame,.poster:focus-visible .frame{transform:rotate(0) scale(1.04);background:var(--sun)}
+.poster b{display:block;margin-top:16px;font:900 clamp(1.05rem,1.5vw,1.35rem)/1.05 var(--disp);font-stretch:115%}
+.poster span.s{display:block;font-size:.9375rem;margin-top:4px}
+.poster .sticker{position:absolute;top:-12px;right:-8px;--r:8deg;z-index:2;font-size:.8125rem;padding:5px 10px}
+
+/* album detail */
+.album{background:var(--sun)}
+.album-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,80px);align-items:start}
+@media (max-width:900px){.album-grid{grid-template-columns:minmax(0,1fr)}}
+.cover{position:sticky;top:96px}
+@media (max-width:900px){.cover{position:relative;top:0;max-width:440px}}
+.cover img{width:100%;aspect-ratio:1;object-fit:cover;border:4px solid var(--ink);box-shadow:12px 12px 0 var(--ink);transform:rotate(-2deg)}
+.cover .sticker{position:absolute;right:-6px;top:-14px;--r:7deg;background:var(--pink)}
+.cover .sticker.b{top:auto;bottom:-14px;left:-6px;right:auto;--r:-6deg;background:var(--mint)}
+.album .fit{width:100%}
+.album-sub{margin:18px 0 26px;font-weight:700;font-size:1.125rem}
+.fmts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;border:0;padding:0;margin:0 0 18px}
+.fmts legend{font-weight:800;margin-bottom:10px;padding:0}
+.fmt{position:relative}
+.fmt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.fmt span{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:64px;padding:12px 16px;border:3px solid var(--ink);border-radius:16px;background:var(--paper);font-weight:800;transition:background .2s,transform .2s var(--ease)}
+.fmt span em{font-style:normal;font:900 1.25rem/1 var(--disp);font-stretch:110%}
+.fmt input:checked+span{background:var(--ink);color:var(--paper)}
+.fmt input:focus-visible+span{outline:3px solid var(--ink);outline-offset:3px}
+.fmt:hover span{transform:translateY(-2px)}
+@media (max-width:420px){.fmts{grid-template-columns:1fr}}
+.buy-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px}
+.tracks{list-style:none;margin:36px 0 0;padding:0;border-top:3px solid var(--ink)}
+.tr{border-bottom:2px solid var(--ink)}
+.tr-row{display:grid;grid-template-columns:2rem 44px minmax(0,1fr) auto 44px;gap:12px;align-items:center;padding:10px 0}
+.tr-n{font:900 1rem/1 var(--disp);font-variant-numeric:tabular-nums}
+.tr-t b{display:block;font-weight:800;line-height:1.25}
+.tr-t small{display:block;font-size:.875rem}
+.tr-t .bar{height:5px;margin-top:6px;background:rgba(14,26,64,.15);border-radius:3px;overflow:hidden;display:none}
+.tr-t .bar i{display:block;height:100%;width:0;background:var(--ink)}
+.tr.is-playing .bar{display:block}
+.tr.is-playing{background:linear-gradient(90deg,rgba(255,251,240,.55),transparent)}
+.price{min-height:44px;min-width:64px;padding:0 12px;border-radius:999px;border:3px solid var(--ink);background:var(--paper);font-weight:800}
+.price:hover{background:var(--ink);color:var(--paper)}
+.exp{width:44px;height:44px;border-radius:50%;border:3px solid var(--ink);background:transparent;display:grid;place-items:center}
+.exp svg{transition:transform .25s}
+.exp[aria-expanded="true"] svg{transform:rotate(180deg)}
+.tr-x{display:flex;flex-wrap:wrap;gap:10px 22px;padding:0 0 14px calc(2rem + 44px + 24px)}
+.tr-x[hidden]{display:none}
+.tr-x div{display:flex;align-items:center;gap:10px;font-weight:600}
+@media (max-width:520px){
+  .tr-row{grid-template-columns:1.4rem 44px minmax(0,1fr) auto 44px;gap:8px}
+  .tr-n{font-size:.8125rem}
+  .tr-x{padding-left:0}
+}
+.fine{margin-top:16px;font-size:.9375rem;font-weight:600}
+
+/* videos */
+.videos{background:var(--mint)}
+.vgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;gap:clamp(16px,2.4vw,32px)}
+.vgrid .v.big{grid-column:span 2;grid-row:span 2}
+.vgrid .v.big.r{grid-column:3 / span 2}
+@media (max-width:900px){.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.vgrid .v.big,.vgrid .v.big.r{grid-column:1 / -1;grid-row:auto}}
+@media (max-width:560px){.vgrid{grid-template-columns:minmax(0,1fr)}}
+.v{display:block;width:100%;text-align:left;padding:0;border:0;background:none;color:var(--ink)}
+.v .duo{--hi:#C9F7E1;aspect-ratio:16/9;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);transition:transform .25s var(--ease),box-shadow .25s}
+@media (min-width:901px){.v.big{display:flex;flex-direction:column}.v.big .duo{aspect-ratio:auto;flex:1;min-height:220px}}
+.v .duo img{transition:filter .35s,mix-blend-mode .35s}
+.v:hover .duo,.v:focus-visible .duo{transform:rotate(-1deg) translateY(-3px);box-shadow:10px 10px 0 var(--ink)}
+.v:hover .duo img,.v:focus-visible .duo img{filter:none;mix-blend-mode:normal}
+.v:hover .duo::after,.v:focus-visible .duo::after,.v:hover .duo::before,.v:focus-visible .duo::before{opacity:0}
+.v .duo::after,.v .duo::before{transition:opacity .35s}
+.v .play{position:absolute;z-index:3;left:14px;bottom:14px;width:56px;height:56px;border-radius:50%;background:var(--sun);border:3px solid var(--ink);display:grid;place-items:center;transform:rotate(-8deg)}
+.v b{display:block;margin-top:14px;font:900 1.15rem/1.1 var(--disp);font-stretch:110%}
+.v small{display:block;font-size:.9375rem;margin-top:2px}
+.v.big b{font-size:clamp(1.3rem,2.4vw,2rem)}
+
+/* find */
+.find{background:var(--sky)}
+.find-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:start}
+@media (max-width:900px){.find-grid{grid-template-columns:minmax(0,1fr)}}
+.search label{display:block;font-weight:800;margin-bottom:8px}
+.search input{width:100%;min-height:64px;padding:0 20px;border:3px solid var(--ink);border-radius:999px;background:var(--paper);font:800 1.25rem/1 var(--body);box-shadow:5px 5px 0 var(--ink)}
+.search input:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;border:0}
+.chips legend{font-weight:800;margin-bottom:10px;padding:0}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:3px solid var(--ink);background:var(--paper);font-weight:800;transition:transform .2s var(--ease)}
+.chip:hover{transform:rotate(-3deg)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.note{margin-top:18px;font-size:.9375rem;font-weight:600;max-width:46ch}
+.results{background:var(--paper);border:3px solid var(--ink);border-radius:24px;box-shadow:8px 8px 0 var(--ink);padding:8px 18px}
+.count{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:3px solid var(--ink);font-weight:800}
+.songs{list-style:none;margin:0;padding:0;max-height:620px;overflow:auto}
+.song{display:grid;grid-template-columns:52px minmax(0,1fr) 44px;gap:14px;align-items:center;padding:10px 0;border-bottom:2px solid rgba(14,26,64,.18)}
+.song:last-child{border-bottom:0}
+.song .th{width:52px;height:52px;border:2px solid var(--ink);object-fit:cover;background:var(--sun)}
+.song .th.sw{display:grid;place-items:center;font:900 1.4rem/1 var(--disp)}
+.song b{display:block;font-weight:800;line-height:1.25}
+.song small{display:block;font-size:.875rem}
+.empty{padding:28px 0;font-weight:700}
+
+/* booking */
+.book{background:var(--pink)}
+.book-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center}
+@media (max-width:900px){.book-grid{grid-template-columns:minmax(0,1fr)}}
+.book .fit{width:100%}
+.book-photo .duo{--hi:#FFD6EB;aspect-ratio:4/3;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);transform:rotate(1.5deg)}
+.book-photo .duo img{object-position:78% 40%;filter:grayscale(1) contrast(1.1) brightness(1.75)}
+.book-copy{display:grid;gap:18px;margin-top:26px}
+.nl{margin-top:clamp(40px,5vw,64px);background:var(--paper);border:3px solid var(--ink);border-radius:28px;padding:clamp(20px,3vw,36px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px 40px;align-items:end;box-shadow:8px 8px 0 var(--ink)}
+@media (max-width:900px){.nl{grid-template-columns:minmax(0,1fr)}}
+.nl h3{margin:0;font:900 clamp(1.6rem,3vw,2.6rem)/1 var(--disp);font-stretch:130%;letter-spacing:-.02em}
+.nl p{margin:10px 0 0}
+.nl form{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+.nl .field{flex:1 1 220px}
+.nl label{display:block;font-weight:800;margin-bottom:6px}
+.nl input{width:100%;min-height:52px;padding:0 18px;border:3px solid var(--ink);border-radius:999px;background:var(--chalk);font-weight:600}
+
+/* footer */
+.foot{background:var(--ink);color:var(--paper);padding:clamp(40px,6vw,80px) 0 110px;--focus:var(--sun)}
+.foot .fit{color:var(--sun);width:100%}
+.foot-links{display:flex;flex-wrap:wrap;gap:4px 8px;margin-top:28px}
+.foot-links a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid rgba(255,251,240,.35)}
+.foot-links a:hover{background:var(--sun);color:var(--ink);border-color:var(--sun)}
+.foot p{margin:24px 0 0;font-size:.9375rem}
+
+/* ---------- mini player ---------- */
+.player{position:fixed;z-index:50;left:50%;bottom:14px;width:min(620px,calc(100% - 24px));transform:translate(-50%,160%);transition:transform .45s var(--ease);background:var(--ink);color:var(--paper);border:3px solid var(--ink);border-radius:999px;padding:6px;display:grid;grid-template-columns:48px minmax(0,1fr) auto auto auto;gap:10px;align-items:center;box-shadow:5px 5px 0 var(--sun);--focus:var(--sun)}
+.player.on{transform:translate(-50%,0)}
+.player .art{width:48px;height:48px;border-radius:50%;object-fit:cover;background:var(--sun);color:var(--ink);display:grid;place-items:center;font:900 1.2rem/1 var(--disp);overflow:hidden}
+.player .art img{width:100%;height:100%;object-fit:cover}
+.player .meta{min-width:0}
+.player .meta b,.player .meta small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player .meta small{font-size:.8125rem;opacity:.85}
+.player .meta .bar{height:4px;margin-top:5px;background:rgba(255,251,240,.2);border-radius:2px;overflow:hidden}
+.player .meta .bar i{display:block;height:100%;width:0;background:var(--sun)}
+.player .pb{background:var(--sun);color:var(--ink)}
+.player .x{width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,251,240,.4);background:transparent;color:var(--paper);display:grid;place-items:center}
+.player .price{background:var(--sun);border-color:var(--sun);color:var(--ink)}
+.player .price[hidden]{display:none}
+@media (max-width:480px){.player{border-radius:22px;grid-template-columns:44px minmax(0,1fr) auto auto;padding:6px 6px 6px 8px}.player .art{width:44px;height:44px}.player .price{display:none}}
+
+.toast{position:fixed;z-index:60;left:50%;bottom:96px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--sun);color:var(--ink);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);border-radius:16px;padding:12px 18px;font-weight:800;max-width:calc(100% - 32px);transition:opacity .25s,transform .3s var(--ease);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0) rotate(-1.5deg)}
+.concept{position:fixed;z-index:45;left:12px;bottom:12px;background:var(--paper);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:4px 10px;font-size:.75rem;font-weight:800;transition:bottom .4s var(--ease)}
+body.playing .concept{bottom:92px}
+@media (max-width:480px){body.playing .concept{bottom:84px}}
+
+/* modal */
+dialog.modal{border:0;padding:0;background:transparent;width:min(1100px,calc(100% - 24px));max-width:none;overflow:visible}
+dialog.modal::backdrop{background:rgba(14,26,64,.86)}
+.modal .box{position:relative;border:4px solid var(--sun);background:#000;aspect-ratio:16/9;box-shadow:10px 10px 0 var(--coral)}
+.modal iframe{width:100%;height:100%;border:0;display:block}
+.modal .close{position:absolute;right:-6px;top:-62px;min-height:48px;--focus:var(--sun)}
+.modal .close:focus-visible{outline-color:var(--sun)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .marquee .track{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="#top">Wayne Burton</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#walk">Walk With Me</a>
+      <a href="#albums">Albums</a>
+      <a href="#videos">Videos</a>
+      <a href="#find">Find a song</a>
+      <a href="#book">Concerts</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <button class="cart" id="cartBtn" aria-label="Cart, 0 items"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h3l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L22 8H7"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="18" cy="20.5" r="1.3"/></svg><span>Cart</span><b id="cartN">0</b></button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Main">
+    <a href="#walk">Walk With Me</a>
+    <a href="#albums">Albums</a>
+    <a href="#videos">Videos</a>
+    <a href="#find">Find a song</a>
+    <a href="#book">Concerts</a>
+  </nav>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="top" aria-labelledby="heroH">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="hero-kicker">
+        <span class="sticker wiggle" style="--r:-5deg">2026 Youth Theme</span>
+        <span class="lang" id="heroLang">English</span>
+      </p>
+      <h1 id="heroH" class="sr">Walk With Me, the 2026 youth theme song by Wayne Burton</h1>
+      <div class="hero-title fit narrow" id="heroTitle" aria-hidden="true" data-max="320"></div>
+      <div class="hero-actions">
+        <button class="btn" id="heroPlay" data-lbl="Listen"><span class="ic"></span><span class="lbl">Listen</span></button>
+        <button class="cycle" id="cycleBtn" aria-pressed="false" aria-label="Pause language rotation"></button>
+        <button class="btn ghost" id="heroGet">Download, pay what you choose</button>
+      </div>
+      <p class="hero-note">Recorded in eight languages so far. Pick yours below.</p>
+    </div>
+    <figure class="hero-photo wiggle-host" style="margin:0">
+      <div class="duo"><img src="https://wayneburton.com/wp-content/uploads/2011/01/waynecoversmile-1024x683.jpg" alt="Wayne Burton smiling on a wooden bridge, wearing a white shirt" width="1024" height="683"></div>
+      <span class="sticker badge wiggle">Pay what you choose</span>
+      <figcaption>Words and music by Wayne Burton</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="mq1"></div></div>
+
+<!-- WALK WITH ME PICKER -->
+<section class="sec walk" id="walk" aria-labelledby="walkH">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="walkH" class="fit wide" data-max="190"><span class="ln"><span class="lt">Sing it in</span></span><span class="ln"><span class="lt">your language</span></span></h2>
+      <div class="walk-head">
+        <p class="lede">Walk With Me is the 2026 youth theme. Tap a language to hear it. The download is pay what you choose, so every ward, family and class can have it.</p>
+        <button class="btn" id="walkGet">Download, pay what you choose</button>
+      </div>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </div>
+</section>
+
+<!-- SINCE 2014 -->
+<section class="sec since" aria-labelledby="sinceH">
+  <div class="wrap since-grid">
+    <div>
+      <h2 id="sinceH" class="fit wide" data-max="170"><span class="ln"><span class="lt">A new youth</span></span><span class="ln"><span class="lt">theme song</span></span><span class="ln"><span class="lt">every year</span></span><span class="ln"><span class="lt">since 2014</span></span></h2>
+      <div class="since-copy">
+        <p class="lede">Wayne Burton is a singer, songwriter and pianist. He writes for families, youth groups and choirs, and his songs are sung in many languages around the world.</p>
+        <p class="lede">His album series By the Voice of My Servants sets General Conference messages to music.</p>
+        <div class="series" aria-label="By the Voice of My Servants volumes">
+          <span class="sticker">Vol. 1</span><span class="sticker">Vol. 2, Hear Him</span><span class="sticker">Vol. 3, Celestial</span>
+        </div>
+      </div>
+    </div>
+    <figure class="since-photo" style="margin:0"><div class="duo"><img src="https://wayneburton.com/wp-content/uploads/2017/07/WebBannerImagesJuly2017B.jpg" alt="Wayne Burton smiling, seated beside a Steinway grand piano in a spotlight" loading="lazy" width="2050" height="817"></div></figure>
+  </div>
+</section>
+
+<!-- ALBUMS -->
+<section class="sec albums dark-sec" id="albums" aria-labelledby="albumsH">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="albumsH" class="fit wide" data-max="300"><span class="ln"><span class="lt">Albums</span></span></h2>
+      <p class="lede">Every album has its own page with the full album, single songs, minus tracks and sheet music. Open All I Need to Know to see how it works.</p>
+    </div>
+    <div class="wall" id="wall"></div>
+  </div>
+</section>
+
+<!-- ALBUM DETAIL -->
+<section class="sec album" id="album" aria-labelledby="albumH">
+  <div class="wrap album-grid">
+    <div class="cover wiggle-host">
+      <img src="https://wayneburton.com/wp-content/uploads/2018/08/All-I-Need-To-Know-AlbumCover.jpg" alt="All I Need to Know album cover" loading="lazy">
+      <span class="sticker wiggle">8th studio album</span>
+      <span class="sticker b wiggle">30-second previews</span>
+    </div>
+    <div>
+      <h2 id="albumH" class="fit wide" data-max="160"><span class="ln"><span class="lt">All I Need</span></span><span class="ln"><span class="lt">to Know</span></span></h2>
+      <p class="album-sub">Wayne Burton’s eighth studio album, 13 tracks</p>
+      <fieldset class="fmts" id="fmts">
+        <legend>Choose a format</legend>
+        <label class="fmt"><input type="radio" name="fmt" value="MP3 album|9.99" checked><span>MP3 album <em>$9.99</em></span></label>
+        <label class="fmt"><input type="radio" name="fmt" value="CD|14.99"><span>CD <em>$14.99</em></span></label>
+        <label class="fmt"><input type="radio" name="fmt" value="Songbook PDF|12.99"><span>Songbook PDF <em>$12.99</em></span></label>
+        <label class="fmt"><input type="radio" name="fmt" value="Printed songbook|14.99"><span>Printed songbook <em>$14.99</em></span></label>
+      </fieldset>
+      <div class="buy-row">
+        <button class="btn" id="buyAlbum">Add to cart, $9.99</button>
+        <button class="btn ghost" id="playAll"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>Play all previews</button>
+      </div>
+      <p class="fine">Single songs $0.99. Open a song for its minus track or sheet music. Checkout stays on WooCommerce and PayPal.</p>
+      <ol class="tracks" id="tracks" aria-label="Track list"></ol>
+    </div>
+  </div>
+</section>
+
+<div class="marquee alt" aria-hidden="true"><div class="track" id="mq2"></div></div>
+
+<!-- VIDEOS -->
+<section class="sec videos" id="videos" aria-labelledby="videosH">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="videosH" class="fit wide" data-max="300"><span class="ln"><span class="lt">Videos</span></span></h2>
+      <p class="lede">Originals, youth themes, Christmas music and covers, in English and other languages.</p>
+    </div>
+    <div class="vgrid" id="vgrid"></div>
+  </div>
+</section>
+
+<!-- FIND A SONG -->
+<section class="sec find" id="find" aria-labelledby="findH">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="findH" class="fit wide" data-max="230"><span class="ln"><span class="lt">Find a song</span></span></h2>
+      <p class="lede">For a talk, a lesson, a choir or a hard day. Type a word or pick a theme.</p>
+    </div>
+    <div class="find-grid">
+      <div>
+        <div class="search">
+          <label for="q">Search songs</label>
+          <input id="q" type="search" placeholder="Try hope, Christmas or a title" autocomplete="off">
+        </div>
+        <fieldset class="chips" id="chips"><legend>Themes</legend></fieldset>
+        <p class="note">Themes here are examples for this concept. On the finished site Wayne chooses the themes for each song.</p>
+      </div>
+      <div class="results">
+        <div class="count"><span id="cnt" aria-live="polite">0 songs</span><span class="small">30-second previews</span></div>
+        <ul class="songs" id="songs"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING + NEWSLETTER -->
+<section class="sec book" id="book" aria-labelledby="bookH">
+  <div class="wrap">
+    <div class="book-grid">
+      <div>
+        <h2 id="bookH" class="fit wide" data-max="170"><span class="ln"><span class="lt">Concerts</span></span><span class="ln"><span class="lt">and firesides</span></span></h2>
+        <div class="book-copy">
+          <p class="lede">Planning a concert, fireside or youth event? Send Wayne your date and place, and he will reply with what is possible.</p>
+          <div><button class="btn" id="bookBtn">Ask about booking</button></div>
+        </div>
+      </div>
+      <figure class="book-photo" style="margin:0"><div class="duo"><img src="https://wayneburton.com/wp-content/uploads/2017/07/WebBannerImagesJuly2017A.jpg" alt="Wayne Burton leaning on a grand piano in an empty red concert hall" loading="lazy" width="2053" height="818"></div></figure>
+    </div>
+    <div class="nl">
+      <div>
+        <h3>New songs by email</h3>
+        <p>Hear about the next youth theme and new albums first.</p>
+      </div>
+      <form id="nl" novalidate>
+        <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="name@example.com"></div>
+        <button class="btn" type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="fit wide" data-max="400" aria-hidden="true" style="margin:0"><span class="ln"><span class="lt">Wayne Burton</span></span></p>
+    <nav class="foot-links" aria-label="Footer">
+      <a href="#walk">Walk With Me</a><a href="#albums">Albums</a><a href="#videos">Videos</a><a href="#find">Find a song</a><a href="#book">Concerts and booking</a>
+    </nav>
+    <p>Wayne Burton, inspirational music. Design concept for wayneburton.com.</p>
+  </div>
+</footer>
+
+<!-- mini player -->
+<div class="player" id="player" role="region" aria-label="Audio player">
+  <div class="art" id="pArt" aria-hidden="true"></div>
+  <div class="meta"><b id="pT">Nothing playing</b><small id="pS"></small><div class="bar"><i id="pBar"></i></div></div>
+  <button class="pb" id="pToggle" aria-label="Play"></button>
+  <button class="price" id="pBuy" hidden>Buy $0.99</button>
+  <button class="x" id="pClose" aria-label="Stop and close player"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</div>
+<audio id="audio" preload="none"></audio>
+
+<dialog class="modal" id="modal" aria-label="Video">
+  <button class="btn close" id="mClose" style="--bb:var(--sun);--bg-b:var(--sun);--fg-b:var(--ink)">Close video</button>
+  <div class="box"><iframe id="mFrame" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="concept">Concept, not live</div>
+
+<script>
+const U='https://wayneburton.com/wp-content/uploads/';
+const PLAY='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5l13 7.5-13 7.5z"/></svg>';
+const PAUSE='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
+const STAR='<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.6 8.2L23 9.4l-6.8 5 2.4 8.6L12 18l-6.6 5 2.4-8.6L1 9.4l8.4-1.2z"/></svg>';
+const PREVIEW=30;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const yt=(id,q='hqdefault')=>`https://i.ytimg.com/vi/${id}/${q}.jpg`;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- content (from wayneburton.com) ---------- */
+const VIDEOS=[
+ {id:'70cKPReRTuU',t:'All I Need to Know',s:'Official video'},
+ {id:'lKmo5zmL2tM',t:'Fragile',s:'Featuring Hanna Eyre'},
+ {id:'wZjrEDdYdJ8',t:'A Great Work',s:'2021 Youth Theme'},
+ {id:'2uuX1xPxylQ',t:'O Come All Ye Faithful',s:"One Voice Children's Choir"},
+ {id:'NcylW-ooYAo',t:'Breath of Heaven',s:'Featuring Madilyn Paige'},
+ {id:'_rYDHO7XcXY',t:'Live Your Love',s:'Official video'},
+ {id:'WYkvo-cBXj4',t:'One Sweet Day',s:'Rebecca Lopez, Yahosh, Madilyn Paige'},
+ {id:'PuEcbm-6VAs',t:'Embarcaos en el Servicio de Dios',s:'Sung in Spanish by Elenyi'},
+ {id:'vgNy_Ogv2Po',t:'I Can Do All Things Through Christ',s:'Sung in Yoruba'},
+ {id:'WEhVaJP173g',t:'God Help the Outcasts',s:'Blake Walker and Evie Moleni'}
+];
+const WWM=[
+ {l:'English',n:'Walk With Me',f:'2025/12/Walk-With-Me.mp3',g:'rgba(255,181,71,.38)'},
+ {l:'Spanish',n:'Anda Conmigo',f:'2025/12/Walk-With-Me-Spanish.mp3',g:'rgba(255,99,72,.38)'},
+ {l:'Portuguese',n:'Anda Comigo',f:'2025/12/Walk-With-Me-Portuguese.mp3',g:'rgba(64,200,140,.34)'},
+ {l:'German',n:'Wandle Mit Mir',f:'2025/12/Walk-With-Me-German.mp3',g:'rgba(120,140,255,.38)'},
+ {l:'Chinese',n:'與我同行',f:'2025/12/Walk-With-Me-Mandarin.mp3',g:'rgba(230,60,80,.38)'},
+ {l:'Tagalog',n:'Maglakad Kasama Ko',f:'2025/12/Walk-With-Me-Tagalog-1.mp3',g:'rgba(60,170,255,.36)'},
+ {l:'Indonesian',n:'Jalan dengan-Ku',f:'2025/12/Walk-With-Me-Indonesian.mp3',g:'rgba(255,140,60,.36)'},
+ {l:'Māori',n:'Hīkoi Tahi Mai',f:'2026/02/Walk-With-Me-Maori.mp3',g:'rgba(40,190,180,.36)'},
+ {l:'Hawaiian',n:'E Hele Mai',f:null,g:'rgba(255,120,170,.34)'},
+ {l:'Finnish',n:'Vaella Minun Kanssani',f:null,g:'rgba(150,200,255,.34)'}
+];
+/* poster colour per language (same order as WWM); tint = duotone highlight */
+const LANGC=[
+ {bg:'#FFD23F',tint:'#FFE9A6'},{bg:'#FF7A5C',tint:'#FFC4B4'},{bg:'#5EE6A8',tint:'#C4F7DE'},
+ {bg:'#2340E8',tint:'#B8C4FF',dark:1},{bg:'#FF8FC7',tint:'#FFD3EA'},{bg:'#FF9F2E',tint:'#FFD7A6'},
+ {bg:'#7CCBFF',tint:'#CDEBFF'},{bg:'#C6F04D',tint:'#E8FAB4'},{bg:'#FFB3A1',tint:'#FFE0D8'},{bg:'#B8D4FF',tint:'#E2EDFF'}
+];
+const ALBUMS=[
+ {t:'All I Need to Know',s:'Studio album',i:'2018/08/All-I-Need-To-Know-AlbumCover.jpg',c:'#4c6a8a',k:1},
+ {t:'Celestial',s:'By the Voice, Vol. 3',i:'2025/03/Celestial-Cover-3-inch-768x768.png',c:'#b8862b'},
+ {t:'Hear Him',s:'By the Voice, Vol. 2',i:'2021/03/HearHim_cover_nobleed_rgb-768x763.jpg',c:'#8a2a3e'},
+ {t:'By the Voice of My Servants',s:'Vol. 1',i:'2015/10/BytheVoiceCoverSmall-400x400.jpg',c:'#2a3d75'},
+ {t:'Melodies',s:'Album',i:'2020/11/Melodies-Cover-768x768.jpg',c:'#c98a3a'},
+ {t:'Come Let Us Adore Him',s:'Christmas',i:'2016/10/Come-Let-Us-Adore-Him-Cover-Web.png',c:'#a02222'},
+ {t:'Times Like These',s:'Studio album',i:'2013/08/timeslikethesecovershotrgb300-400x400.jpg',c:'#555'},
+ {t:'Thankfully',s:'Studio album',i:'2010/11/ThankfullyCDCoverLarge-1024x1024.jpg',c:'#6a8a4a'},
+ {t:'This Night',s:'Christmas',i:'2010/11/thisnightfinalcover-400x400.jpg',c:'#3a4a70'},
+ {t:'Becoming',s:'Studio album',i:'2011/01/becomingcover-400x400.jpg',c:'#7a6a5a'},
+ {t:'The Quest',s:'Studio album',i:'2011/01/QuestCDcover-400x400.jpg',c:'#4a5a6a'},
+ {t:'A Great Work',s:'2021 Youth Theme',i:'2021/01/A-Great-Work-Cover-Thumbnail-400x400.jpg',c:'#3a6a8a'}
+];
+const THUMBS={'All I Need to Know':U+'2018/08/All-I-Need-To-Know-AlbumCover-300x300.jpg','Thankfully':U+'2010/11/ThankfullyCDCoverLarge-300x300.jpg','This Night':U+'2010/11/thisnightfinalcover-300x300.jpg','Times Like These':U+'2013/08/timeslikethesecovershotrgb300-300x300.jpg'};
+const TRACKS=[
+ ['Who Will Rise','','2018/08/01-Who-Will-Rise.mp3',1,1],['All I Need to Know','','2018/08/02-All-I-Need-to-Know.mp3',1,1],
+ ['Because of You','','2018/08/03-Because-of-You.mp3',1,1],['I Know That My Redeemer Lives','','2018/08/04-I-Know-That-My-Redeemer-Lives.mp3',1,1],
+ ['Look Up','','2018/08/05-Look-Up.mp3',1,1],['His Love Will Lead You Home','','2018/09/06%20His%20Love%20Will%20Lead%20You%20Home.mp3',1,1],
+ ['It Only Takes One','','2018/08/07-It-Only-Takes-One.mp3',1,1],['Blessings','','2018/08/08-Blessings.mp3',1,1],
+ ['This Is Your Time','','2018/08/09-This-is-Your-Time.mp3',1,0],['Fragile','Featuring Hanna Eyre','2018/08/10-Fragile.mp3',1,1],
+ ['Over My Head','','2018/08/11-Over-My-Head.mp3',1,0],['One Sweet Day','','2018/08/12-One-Sweet-Day.mp3',1,0],
+ ['All I Need to Know (Orchestral)','Bonus track','2018/08/13-All-I-Need-to-Know-Instrumental.mp3',0,0]
+];
+const S='2018/10/';
+const SONGS=[
+ ['All I Need to Know','All I Need to Know',['Faith','Jesus Christ'],'2018/08/02-All-I-Need-to-Know.mp3'],
+ ['Who Will Rise','All I Need to Know',['Courage','Service'],'2018/08/01-Who-Will-Rise.mp3'],
+ ['Because of You','All I Need to Know',['Gratitude','Jesus Christ'],'2018/08/03-Because-of-You.mp3'],
+ ['I Know That My Redeemer Lives','All I Need to Know',['Jesus Christ','Easter','Faith'],'2018/08/04-I-Know-That-My-Redeemer-Lives.mp3'],
+ ['Look Up','All I Need to Know',['Hope'],'2018/08/05-Look-Up.mp3'],
+ ['His Love Will Lead You Home','All I Need to Know',['Hope','Family'],'2018/09/06%20His%20Love%20Will%20Lead%20You%20Home.mp3'],
+ ['It Only Takes One','All I Need to Know',['Service','Youth'],'2018/08/07-It-Only-Takes-One.mp3'],
+ ['Blessings','All I Need to Know',['Gratitude'],'2018/08/08-Blessings.mp3'],
+ ['This Is Your Time','All I Need to Know',['Youth','Courage'],'2018/08/09-This-is-Your-Time.mp3'],
+ ['Fragile','All I Need to Know',['Hope'],'2018/08/10-Fragile.mp3'],
+ ['Walk With Me','2026 Youth Theme',['Youth','Jesus Christ'],'2025/12/Walk-With-Me.mp3'],
+ ['Mountains','Thankfully',['Faith','Courage'],S+'01-Mountains-Sample.mp3'],
+ ['Thankfully','Thankfully',['Gratitude'],S+'02-Thankfully-Sample.mp3'],
+ ['Praise Thy Holy Name','Thankfully',['Jesus Christ','Gratitude'],S+'04-Praise-Thy-Holy-Name-Sample.mp3'],
+ ['Always There','Thankfully',['Hope','Family'],S+'05-Always-There-Sample.mp3'],
+ ['Duty to God','Thankfully',['Youth','Service'],S+'06-Duty-to-God-Sample.mp3'],
+ ['He Will Find You','Thankfully',['Hope','Jesus Christ'],S+'07-He-Will-Find-You-Sample.mp3'],
+ ['In Your Hands','Thankfully',['Faith','Hope'],S+'09-In-Your-Hands-Sample.mp3'],
+ ['The Face of Jesus','Thankfully',['Jesus Christ'],S+'11-The-Face-of-Jesus-Sample.mp3'],
+ ['What Would Jesus Do','Thankfully',['Youth','Jesus Christ'],S+'13-What-Would-Jesus-Do-Sample.mp3'],
+ ['This Night','This Night',['Christmas'],S+'01-This-Night-Sample.mp3'],
+ ['O Little Town of Bethlehem','This Night',['Christmas'],S+'03-OLittletownofBethlehem-Sample.mp3'],
+ ['When Christmas Comes to Town','This Night',['Christmas','Family'],S+'06-WhenChristmasComestoTown-Sample.mp3'],
+ ['I Heard the Bells on Christmas Day','This Night',['Christmas','Hope'],S+'07-IHeardTheBellsOnChristmasDay-Sample.mp3'],
+ ['Wise Men Still Seek Him','This Night',['Christmas','Jesus Christ'],S+'08-WiseMen-Sample.mp3'],
+ ['Times Like These','Times Like These',['Courage','Hope'],S+'TimesLikeTheseSample.mp3'],
+ ['Greater Things','Times Like These',['Courage','Youth'],S+'GreaterThingsSample.mp3'],
+ ['Sacred Ground','Times Like These',['Faith'],S+'SacredGroundSample.mp3'],
+ ['With My God','Times Like These',['Faith','Courage'],S+'WithMyGodSample.mp3'],
+ ['Legacy','Times Like These',['Family'],S+'LegacySample.mp3'],
+ ['One by One','Times Like These',['Service','Family'],S+'OnebyOneSample.mp3']
+];
+const THEMES=['All','Faith','Hope','Jesus Christ','Gratitude','Courage','Family','Service','Youth','Christmas','Easter'];
+
+/* ---------- toast + cart ---------- */
+let cart=0;
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(el._h);el._h=setTimeout(()=>el.classList.remove('on'),2600)}
+function addToCart(name,price){cart++;$('#cartN').textContent=cart;$('#cartBtn').setAttribute('aria-label',`Cart, ${cart} item${cart===1?'':'s'}`);
+  const c=$('#cartBtn');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump');
+  toast(`Added: ${name}${price?', $'+price:''}`)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-add]');if(!b)return;const [n,p]=b.dataset.add.split('|');addToCart(n,p)});
+$('#cartBtn').onclick=()=>toast(cart?`${cart} in your cart. Checkout stays on WooCommerce and PayPal.`:'Your cart is empty');
+$('#nl').onsubmit=e=>{e.preventDefault();toast('Concept only: no email was sent')};
+$('#bookBtn').onclick=()=>toast('Concept only: the booking form opens on the finished site');
+
+/* ---------- mobile menu ---------- */
+const menuBtn=$('#menuBtn'),menu=$('#menu');
+function setMenu(o){menu.classList.toggle('open',o);menuBtn.setAttribute('aria-expanded',o);menuBtn.setAttribute('aria-label',o?'Close menu':'Open menu')}
+menuBtn.onclick=()=>setMenu(!menu.classList.contains('open'));
+menu.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){setMenu(false);menuBtn.focus()}});
+
+/* ---------- fit giant type to its box ---------- */
+function fit(el){
+  const lines=[...el.querySelectorAll('.lt')];if(!lines.length)return;
+  el.style.fontSize='100px';
+  const W=el.clientWidth,w=Math.max(...lines.map(l=>l.offsetWidth))||1;
+  let s=Math.min(100*W/w*.985,+el.dataset.max||400);
+  el.style.fontSize=s+'px';
+}
+/* hero: try every way of grouping the words into lines, keep the one that prints biggest */
+function fitHero(){
+  const el=ht,words=el.dataset.words.split(' ');
+  el.style.fontSize='100px';
+  const W=el.clientWidth,H=el.clientHeight,max=+el.dataset.max||320;
+  let best=null;
+  for(let m=0;m<1<<(words.length-1);m++){
+    const ls=[];let curL=[words[0]];
+    for(let k=1;k<words.length;k++){if(m&(1<<(k-1))){ls.push(curL.join(' '));curL=[words[k]]}else curL.push(words[k])}
+    ls.push(curL.join(' '));
+    el.innerHTML=ls.map(t=>`<span class="ln"><span class="lt">${esc(t)}</span></span>`).join('');
+    const w=Math.max(...[...el.querySelectorAll('.lt')].map(l=>l.offsetWidth))||1;
+    const sz=Math.min(100*W/w*.985,H/(ls.length*.9),max);
+    if(!best||sz>best.sz+.5)best={sz,html:el.innerHTML};
+  }
+  el.innerHTML=best.html;el.style.fontSize=best.sz+'px';
+}
+const fitAll=()=>{$$('.fit').forEach(el=>el===ht?fitHero():fit(el))};
+
+/* ---------- audio ---------- */
+const audio=$('#audio');let cur=null;
+function sync(){
+  const on=!!cur&&!audio.paused;
+  $$('[data-src]').forEach(b=>{
+    const me=on&&b.dataset.src===cur.src;
+    b.classList.toggle('is-playing',me);
+    b.setAttribute('aria-label',(me?'Pause ':'Play ')+b.dataset.title);
+    const ic=b.querySelector('.ic');if(ic)ic.innerHTML=me?PAUSE:PLAY;else if(b.classList.contains('pb'))b.innerHTML=me?PAUSE:PLAY;
+    const lb=b.querySelector('.lbl');if(lb&&b.dataset.lbl)lb.textContent=me?'Pause':b.dataset.lbl;
+    const row=b.closest('[data-row]');if(row)row.classList.toggle('is-playing',me);
+  });
+  $('#pToggle').innerHTML=on?PAUSE:PLAY;
+  $('#pToggle').setAttribute('aria-label',(on?'Pause ':'Play ')+(cur?cur.title:''));
+}
+function setProgress(p){$('#pBar').style.width=p+'%';$$('[data-prog]').forEach(x=>x.style.width=(cur&&x.dataset.prog===cur.src)?p+'%':'0')}
+function play(o){
+  if(cur&&cur.src===o.src){audio.paused?audio.play().catch(()=>{}):audio.pause();return}
+  stopAudio(true);cur=o;audio.src=U+o.src;
+  audio.play().catch(err=>{if(err&&err.name!=='AbortError')toast('Preview could not load. Try again.')});
+  const art=$('#pArt');art.innerHTML=o.img?`<img src="${o.img}" alt="">`:esc(o.initial||'W');art.style.background=o.swatch||'';
+  $('#pT').textContent=o.title;$('#pS').textContent=o.sub||'';
+  $('#pBuy').hidden=!o.buy;
+  $('#player').classList.add('on');document.body.classList.add('playing');
+  sync();
+}
+function stopAudio(keepPlayer){if(!cur)return;audio.pause();audio.removeAttribute('src');audio.load();cur=null;setProgress(0);sync();
+  if(!keepPlayer){$('#player').classList.remove('on');document.body.classList.remove('playing')}}
+audio.onplay=audio.onpause=sync;
+audio.ontimeupdate=()=>{if(!cur)return;setProgress(Math.min(audio.currentTime/PREVIEW,1)*100);
+  if(audio.currentTime>=PREVIEW){const nx=cur.next;audio.pause();audio.currentTime=0;setProgress(0);if(nx)nx();else sync()}};
+audio.onended=()=>{const nx=cur&&cur.next;setProgress(0);if(nx)nx();else sync()};
+$('#pToggle').onclick=()=>{if(cur)audio.paused?audio.play().catch(()=>{}):audio.pause()};
+$('#pClose').onclick=()=>stopAudio(false);
+$('#pBuy').onclick=()=>cur&&addToCart(cur.title+' (mp3)','0.99');
+// generic: any [data-src] button plays its file
+document.addEventListener('click',e=>{const b=e.target.closest('[data-src]');if(!b||b.id==='heroPlay')return;
+  play({src:b.dataset.src,title:b.dataset.title,sub:b.dataset.sub,img:b.dataset.img||null,buy:!!b.dataset.buy,swatch:b.dataset.swatch,initial:b.dataset.initial,next:null})});
+
+/* ---------- hero: title cycles through languages ---------- */
+const AV=WWM.map((v,i)=>i).filter(i=>WWM[i].f);
+let hi=0,cycling=!reduced,timer=null;
+const hero=$('.hero'),ht=document.getElementById('heroTitle');
+function setTitle(n){ht.dataset.words=n;fitHero()}
+function paintHero(i){
+  const v=WWM[i],c=LANGC[i];
+  hero.style.setProperty('--bg',c.bg);hero.style.setProperty('--tint',c.tint);
+  hero.style.setProperty('--fg',c.dark?'#FFFBF0':'#0E1A40');hero.classList.toggle('dark',!!c.dark);
+  $('#heroLang').textContent=`${v.l}, ${AV.indexOf(i)+1} of ${AV.length}`;
+  const b=$('#heroPlay');b.dataset.src=v.f;b.dataset.title=`Walk With Me in ${v.l}`;b.dataset.lbl=`Listen in ${v.l}`;
+  sync();
+}
+function setHero(k,animate){
+  hi=(k+AV.length)%AV.length;const i=AV[hi];
+  if(!animate||reduced||!ht.animate){setTitle(WWM[i].n);paintHero(i);return}
+  const old=[...ht.querySelectorAll('.lt')];
+  const outs=old.map((l,n)=>l.animate([{transform:'translateY(0)'},{transform:'translateY(-110%)'}],{duration:240,delay:n*40,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'}));
+  Promise.all(outs.map(a=>a.finished)).then(()=>{
+    setTitle(WWM[i].n);paintHero(i);
+    [...ht.querySelectorAll('.lt')].forEach((l,n)=>l.animate([{transform:'translateY(110%) rotate(4deg)'},{transform:'translateY(0) rotate(0)'}],{duration:560,delay:n*70,easing:'cubic-bezier(.2,.9,.25,1.12)',fill:'backwards'}));
+  });
+}
+function setCycle(on){cycling=on;clearInterval(timer);if(on)timer=setInterval(()=>{if(!document.hidden)setHero(hi+1,true)},2800);
+  const b=$('#cycleBtn');b.setAttribute('aria-pressed',String(!on));b.setAttribute('aria-label',on?'Pause language rotation':'Resume language rotation');
+  b.innerHTML=on?PAUSE:PLAY}
+$('#cycleBtn').onclick=()=>setCycle(!cycling);
+$('#heroPlay').onclick=()=>{const i=AV[hi],v=WWM[i];setCycle(false);
+  play({src:v.f,title:`${v.n}`,sub:`Walk With Me, ${v.l}`,img:null,swatch:LANGC[i].bg,initial:'W'})};
+$('#heroGet').onclick=$('#walkGet').onclick=()=>{const v=WWM[AV[hi]];addToCart(`Walk With Me (${v.l} mp3), pay what you choose`)};
+setHero(0,false);setCycle(cycling);
+
+/* ---------- marquees ---------- */
+const mqGroup=(items)=>`<div class="grp">${items.map(t=>`<span>${esc(t)}</span>${STAR}`).join('')}</div>`;
+const g1=mqGroup(WWM.map(v=>v.n));$('#mq1').innerHTML=g1+g1;
+const g2=mqGroup(['Youth themes','Minus tracks','Sheet music','Choirs','Firesides','Christmas','Families']);$('#mq2').innerHTML=g2+g2;
+
+/* ---------- language tiles ---------- */
+$('#tiles').innerHTML=WWM.map((v,i)=>{const c=LANGC[i];
+  if(!v.f)return `<div class="tile soon" style="--c:${c.bg}"><span class="sticker">Coming soon</span><span class="nm" lang="${i===8?'haw':'fi'}">${esc(v.n)}</span><span class="row"><span>${esc(v.l)}</span></span></div>`;
+  return `<button class="tile${c.dark?' dark':''}" style="--c:${c.bg};${c.dark?'--tfg:#FFFBF0':''}" data-src="${v.f}" data-title="Walk With Me in ${esc(v.l)} (${esc(v.n)})" data-sub="Walk With Me, ${esc(v.l)}" data-swatch="${c.bg}" data-initial="W">
+    <span class="nm">${esc(v.n)}</span><span class="row"><span>${esc(v.l)}</span><span class="ic"></span></span><i class="prog" data-prog="${v.f}"></i></button>`}).join('');
+
+/* ---------- album wall ---------- */
+const ROT=[-2.5,1.8,-1.2,2.4,1.2,-2,2.2,-1.6];
+$('#wall').innerHTML=ALBUMS.map((a,i)=>`<a class="poster" href="${a.k?'#album':'#albums'}" ${a.k?'':'data-soon="1"'} style="--fc:${a.c};--rot:${ROT[i%ROT.length]}deg">
+  ${a.k?'<span class="sticker">Open album page</span>':''}
+  <div class="frame"><img src="${U+a.i}" alt="${esc(a.t)} album cover" loading="lazy"></div>
+  <b>${esc(a.t)}</b><span class="s">${esc(a.s)}</span></a>`).join('');
+$('#wall').addEventListener('click',e=>{const a=e.target.closest('[data-soon]');if(!a)return;e.preventDefault();toast('On the finished site every album gets this page')});
+
+/* ---------- album detail ---------- */
+const AC=U+'2018/08/All-I-Need-To-Know-AlbumCover-300x300.jpg';
+const fmtVal=()=>$('#fmts input:checked').value.split('|');
+$('#fmts').onchange=()=>{$('#buyAlbum').textContent='Add to cart, $'+fmtVal()[1]};
+$('#buyAlbum').onclick=()=>{const [n,p]=fmtVal();addToCart('All I Need to Know, '+n,p)};
+const CHEV='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+$('#tracks').innerHTML=TRACKS.map((t,i)=>{const more=t[3]||t[4];return `<li class="tr" data-row="1">
+  <div class="tr-row">
+    <span class="tr-n" aria-hidden="true">${String(i+1).padStart(2,'0')}</span>
+    <button class="pb" data-src="${t[2]}" data-title="${esc(t[0])}" data-sub="All I Need to Know" data-img="${AC}" data-buy="1" data-i="${i}"></button>
+    <div class="tr-t"><b>${esc(t[0])}</b>${t[1]?`<small>${esc(t[1])}</small>`:''}<div class="bar"><i data-prog="${t[2]}"></i></div></div>
+    <button class="price" data-add="${esc(t[0])} (mp3)|0.99" aria-label="Add ${esc(t[0])} mp3 to cart, $0.99">$0.99</button>
+    ${more?`<button class="exp" aria-expanded="false" aria-controls="x${i}" aria-label="More versions of ${esc(t[0])}">${CHEV}</button>`:'<span></span>'}
+  </div>
+  ${more?`<div class="tr-x" id="x${i}" hidden>${t[3]?`<div>Minus track <button class="price" data-add="${esc(t[0])} minus track|2.99" aria-label="Add ${esc(t[0])} minus track to cart, $2.99">$2.99</button></div>`:''}${t[4]?`<div>Sheet music PDF <button class="price" data-add="${esc(t[0])} sheet music PDF|2.99" aria-label="Add ${esc(t[0])} sheet music PDF to cart, $2.99">$2.99</button></div>`:''}</div>`:''}
+</li>`}).join('');
+$('#tracks').addEventListener('click',e=>{const x=e.target.closest('.exp');if(!x)return;const p=$('#'+x.getAttribute('aria-controls'));const o=p.hidden;p.hidden=!o;x.setAttribute('aria-expanded',o)});
+function playTrack(i){const t=TRACKS[i];play({src:t[2],title:t[0],sub:'All I Need to Know',img:AC,buy:1,next:i<TRACKS.length-1?()=>playTrack(i+1):null})}
+$('#playAll').onclick=()=>playTrack(0);
+
+/* ---------- videos ---------- */
+const PLAYBIG='<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5l13 7.5-13 7.5z"/></svg>';
+$('#vgrid').innerHTML=VIDEOS.map((v,i)=>`<button class="v${i===0?' big':i===5?' big r':''}" data-v="${v.id}" aria-label="Play video: ${esc(v.t)}, ${esc(v.s)}">
+  <div class="duo"><img src="${yt(v.id,'maxresdefault')}" alt="" loading="lazy" data-id="${v.id}"><span class="play">${PLAYBIG}</span></div>
+  <b>${esc(v.t)}</b><small>${esc(v.s)}</small></button>`).join('');
+$$('#vgrid img').forEach(img=>{const fb=()=>{if(!img.dataset.fb){img.dataset.fb=1;img.src=yt(img.dataset.id)}};img.onerror=fb;img.onload=()=>{if(img.naturalWidth<=120)fb()}});
+const modal=$('#modal');let lastF=null;
+function openVideo(id){stopAudio(false);lastF=document.activeElement;$('#mFrame').src=`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;modal.showModal();$('#mClose').focus()}
+modal.addEventListener('close',()=>{$('#mFrame').src='about:blank';lastF&&lastF.focus()});
+$('#mClose').onclick=()=>modal.close();
+modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
+$('#vgrid').addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(b)openVideo(b.dataset.v)});
+
+/* ---------- find a song ---------- */
+let theme='All';
+$('#chips').insertAdjacentHTML('beforeend',THEMES.map((t,i)=>`<button type="button" class="chip" aria-pressed="${i===0}" data-t="${t}">${t}</button>`).join(''));
+$('#chips').onclick=e=>{const b=e.target.closest('[data-t]');if(!b)return;theme=b.dataset.t;$$('#chips .chip').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderSongs()};
+$('#q').oninput=renderSongs;
+function renderSongs(){
+  const q=$('#q').value.trim().toLowerCase();
+  const hits=SONGS.filter(s=>(theme==='All'||s[2].includes(theme))&&(!q||`${s[0]} ${s[1]} ${s[2].join(' ')}`.toLowerCase().includes(q)));
+  $('#cnt').textContent=`${hits.length} song${hits.length===1?'':'s'}`;
+  $('#songs').innerHTML=hits.length?hits.map(s=>{const th=THUMBS[s[1]];return `<li class="song">
+    ${th?`<img class="th" src="${th}" alt="" loading="lazy">`:`<span class="th sw" aria-hidden="true">W</span>`}
+    <div><b>${esc(s[0])}</b><small>${esc(s[1])}. ${esc(s[2].join(', '))}</small></div>
+    <button class="pb" data-src="${s[3]}" data-title="${esc(s[0])}" data-sub="${esc(s[1])}" ${th?`data-img="${th}" data-buy="1"`:'data-swatch="#FFD23F" data-initial="W"'}></button></li>`}).join('')
+    :`<li class="empty">Nothing matches “${esc($('#q').value)}”. Try a shorter word, or choose All.</li>`;
+  sync();
+}
+renderSongs();
+
+/* ---------- init ---------- */
+sync();fitAll();
+let rz=0;addEventListener('resize',()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(fitAll)});
+document.fonts&&document.fonts.ready.then(fitAll);
+</script>
+</body>
+</html>
